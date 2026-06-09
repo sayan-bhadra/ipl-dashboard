@@ -300,8 +300,8 @@ st.subheader("⚡ How Teams Win — By Runs vs By Wickets")
 col_c, col_d = st.columns(2)
 
 with col_c:
-    runs_col = "win_by_runs" if "win_by_runs" in filtered_matches.columns else "WinByRuns"
-    win_by_runs = filtered_matches[filtered_matches[runs_col] > 0][runs_col]
+    runs_col = "result_margin"
+    win_by_runs = filtered_matches[filtered_matches['result'] == 'runs'][runs_col]
     fig6 = px.histogram(
         win_by_runs,
         nbins=20,
@@ -319,8 +319,8 @@ with col_c:
     st.plotly_chart(fig6, use_container_width=True)
 
 with col_d:
-    wickets_col = "win_by_wickets" if "win_by_wickets" in filtered_matches.columns else "WinByWickets"
-    win_by_wickets = filtered_matches[filtered_matches[wickets_col] > 0][wickets_col]
+    wickets_col = "result_margin"
+    win_by_wickets = filtered_matches[filtered_matches['result'] == 'wickets'][wickets_col]
     fig7 = px.histogram(
         win_by_wickets,
         nbins=10,
@@ -348,4 +348,3 @@ st.markdown("""
     Data Science Project | Techno India University
 </div>
 """, unsafe_allow_html=True)
-z\
